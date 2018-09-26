@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.pawel.location.entities.Location;
 import pl.pawel.location.service.LocationService;
 
@@ -35,6 +36,16 @@ public class LocationController {
         List<Location> locations = service.getAllLocations();
         modelMap.addAttribute("locations", locations);
 
+        return "displayLocations";
+    }
+
+    @RequestMapping("deleteLocation")
+    public String deleteLocation(@RequestParam("id") int id, ModelMap modelMap) {
+        Location location = new Location();
+        location.setId(id);
+        service.deleteLocation(location);
+        List<Location> locations = service.getAllLocations();
+        modelMap.addAttribute("locations", locations);
         return "displayLocations";
     }
 }
