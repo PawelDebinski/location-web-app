@@ -8,13 +8,16 @@
 
 <body>
 
-    <form action="" method=""></form>
-    Id: <input type="text" name="id">
-    Code: <input type="text" name="code">
-    Name: <input type="text" name="name">
-    Type: Urban <input type="radio" name="type">
-        Rural <input type="radio" name="type">
-<input type="submit" value="save">
+    <form action="" method="">
+        <pre>
+            Id: <input type="text" name="id">
+            Code: <input type="text" name="code">
+            Name: <input type="text" name="name">
+            Type: Urban <input type="radio" name="type">
+                Rural <input type="radio" name="type">
+            <input type="submit" value="save">
+        </pre>
+    </form>
 
 
 </body>
