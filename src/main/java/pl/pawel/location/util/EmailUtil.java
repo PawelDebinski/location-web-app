@@ -2,5 +2,5 @@ package pl.pawel.location.util;
 
 public interface EmailUtil {
 
-    void sendEmail(String toAddress, String subject, String body);
+    void sendEmail(String from, String to, String subject, String body);
 }

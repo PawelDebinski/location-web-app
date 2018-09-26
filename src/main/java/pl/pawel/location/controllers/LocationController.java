@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.pawel.location.entities.Location;
 import pl.pawel.location.service.LocationService;
+import pl.pawel.location.util.EmailUtil;
 
 import java.util.List;
 
@@ -17,6 +18,9 @@ public class LocationController {
 
     @Autowired
     LocationService service;
+
+    @Autowired
+    EmailUtil emailUtil;
 
     @RequestMapping("/showCreate")
     public String showCreate() {
@@ -28,6 +32,8 @@ public class LocationController {
         Location locationSaved = service.saveLocation(location);
         String msg = "Location saved with id: " + locationSaved.getId();
         modelMap.addAttribute("msg", msg);
+        emailUtil.sendEmail("iammarrypoppinsyo@gmail.com", "iammarrypoppinsyo@gmail.com",
+                            "Location Saved", "Location Saved Successfully and about to return a response");
         return "createLocation";
     }
 
