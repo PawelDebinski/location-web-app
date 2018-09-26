@@ -26,6 +26,7 @@
             <td>${location.name}</td>
             <td>${location.type}</td>
             <td><a href="deleteLocation?id=${location.id}">delete</a></td>
+            <td><a href="updateLocation?id=${location.id}">update</a></td>
         </tr>
         </c:forEach>
     </table>
