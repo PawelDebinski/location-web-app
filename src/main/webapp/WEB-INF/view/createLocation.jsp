@@ -8,7 +8,7 @@
 
 <body>
 
-    <form action="" method="">
+    <form action="saveLoc" method="POST">
         <pre>
             Id: <input type="text" name="id">
             Code: <input type="text" name="code">
