@@ -29,5 +29,7 @@
         </c:forEach>
     </table>
 
+    <a href="showCreate">Add Locations</a>
+
 </body>
 </html>
