@@ -20,6 +20,7 @@
     </form>
     ${msg}
 
+    <a href="displayLocations">View All</a>
 
 </body>
 </html>

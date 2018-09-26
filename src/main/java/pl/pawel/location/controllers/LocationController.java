@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pawel.location.entities.Location;
 import pl.pawel.location.service.LocationService;
 
+import java.util.List;
+
 @Controller
 public class LocationController {
 
@@ -26,5 +28,13 @@ public class LocationController {
         String msg = "Location saved with id: " + locationSaved.getId();
         modelMap.addAttribute("msg", msg);
         return "createLocation";
+    }
+
+    @RequestMapping("/displayLocations")
+    public String displayLocations(ModelMap modelMap) {
+        List<Location> locations = service.getAllLocations();
+        modelMap.addAttribute("locations", locations);
+
+        return "displayLocations";
     }
 }
