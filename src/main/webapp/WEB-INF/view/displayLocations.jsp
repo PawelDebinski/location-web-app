@@ -32,6 +32,7 @@
     </table>
 
     <a href="showCreate">Add Locations</a>
+    <a href="generateReport">Generate Report</a>
 
 </body>
 </html>

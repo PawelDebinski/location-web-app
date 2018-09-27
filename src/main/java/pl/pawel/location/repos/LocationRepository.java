@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 
-    @Query("select type, count(type) from location group by type")
+    @Query("select l.type, count(l.type) from Location l group by l.type")
     public List<Object[]> findTypeAndTypeCount();
 
 }
