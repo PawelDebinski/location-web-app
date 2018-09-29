@@ -1,5 +1,7 @@
 package pl.pawel.location.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,8 @@ import java.util.List;
 @Controller
 public class LocationController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LocationController.class);
+
     @Autowired
     LocationService service;
 
@@ -36,11 +40,13 @@ public class LocationController {
 
     @RequestMapping("/showCreate")
     public String showCreate() {
+        LOGGER.info("=== Inside showCreate()");
         return "createLocation";
     }
 
     @PostMapping("/saveLoc")
     public String saveLocation(@ModelAttribute("location")Location location, ModelMap modelMap) {
+        LOGGER.info("=== Inside saveLocation() -> Location: {}", location);
         Location locationSaved = service.saveLocation(location);
         String msg = "Location saved with id: " + locationSaved.getId();
         modelMap.addAttribute("msg", msg);
@@ -51,6 +57,7 @@ public class LocationController {
 
     @RequestMapping("/displayLocations")
     public String displayLocations(ModelMap modelMap) {
+        LOGGER.info("=== Inside displayLocations()");
         List<Location> locations = service.getAllLocations();
         modelMap.addAttribute("locations", locations);
 
@@ -59,6 +66,7 @@ public class LocationController {
 
     @RequestMapping("deleteLocation")
     public String deleteLocation(@RequestParam("id") int id, ModelMap modelMap) {
+        LOGGER.info("=== Inside deleteLocation() -> id: {}", id);
         Location location = new Location();
         location.setId(id);
         service.deleteLocation(location);
@@ -69,6 +77,7 @@ public class LocationController {
 
     @RequestMapping("/showUpdate")
     public String showUpdate(@RequestParam("id") int id, ModelMap modelMap) {
+        LOGGER.info("=== Inside showUpdate() -> id: {}", id);
         Location location = service.getLocationById(id);
         modelMap.addAttribute("location", location);
         return "updateLocation";
@@ -76,6 +85,7 @@ public class LocationController {
 
     @RequestMapping("/updateLoc")
     public String updateLocation(@ModelAttribute("location")Location location, ModelMap modelMap) {
+        LOGGER.info("=== Inside updateLocation() -> Location: {}", location);
         service.updateLocation(location);
         List<Location> locations = service.getAllLocations();
         modelMap.addAttribute("locations", locations);
@@ -84,6 +94,7 @@ public class LocationController {
 
     @RequestMapping("/generateReport")
     public String generateReport() {
+        LOGGER.info("=== Inside generateReport()");
         String path = sc.getRealPath("/");
 
         List<Object[]> data = locationRepository.findTypeAndTypeCount();
